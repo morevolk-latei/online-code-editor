@@ -80,7 +80,7 @@ var sendCode = (_code,_mode,_sc_flag)=>{
 						if(cl.contains('danger'))
 							cl.remove('danger');
 						cl.add('success');
-						$alertIcon.src='http://172.22.90.42:554/success.svg';
+						$alertIcon.src='http://13.126.13.152/images/success.svg';
 						$alert_desc.innerHTML="code submitted successfully.";
 						$closeAlertBtn.classList.add('success');
 						blurMainContainer();
@@ -246,7 +246,7 @@ window.onbeforeunload=()=>{
 window.onblur=()=>{
 	--totalChance;
 	console.log(totalChance);
-	$alertIcon.src="http://172.22.90.42:554/danger.svg";	
+	$alertIcon.src="http://13.126.13.152/images/danger.svg";	
 	let closeBtnClassList = $closeAlertBtn.classList;
 	if(closeBtnClassList.contains('success'))
 		closeBtnClassList.remove('success');
