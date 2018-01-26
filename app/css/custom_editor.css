@@ -1,0 +1,394 @@
+
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+-webkit-font-smoothing: antialiased;
+/* outline: none; */
+}
+body{
+	overflow: hidden;
+	height: 100%;
+	background-color: rgba(0,0,0,0.9);
+	/* background-color: #efefef; */
+}
+
+header{
+	position: fixed;
+	width: 100%;
+	height: 50px;
+	background:#1A237E;
+	z-index: 1000;
+	top: 0;
+}
+
+header h2{
+	color: #fefefe;
+	margin-top: 12px;
+	margin-left: 10%;
+	font-family:arial;
+	font-weight: 500;
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+    cursor:pointer;
+	float: left;
+}
+
+header select{
+	appearance:none;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	-ms-appearance:none;
+	-o-appearance:none;
+	padding: 3px 22px 3px 5px;
+	font-family: arial;
+	font-weight: bold;
+	color: #3f3f3f;
+	text-transform: capitalize;
+	border: 1px solid #fff;
+	border-radius: 1px;
+	background: #ffffff url('../../images/arrow-down.png') no-repeat 170px center;
+	background-size: 15px;
+}
+header #themeSelectionContainer, #progLangSelectionContainer{
+	/*outline:1px solid #fff;*/
+	float: left;
+	margin-top: 14px;
+	margin-left: 10%;
+}
+header #progLangSelectionContainer{
+	margin-left: 5%;
+}
+header #progLangSelectionContainer select{
+	background-position: 74px;
+}
+header #themeSelectionContainer label, #progLangSelectionContainer label{
+	color: #fff;
+	font-family: arial;
+	font-weight: bold;
+}
+
+
+#pallete{
+	position: absolute;
+	background: #d7d7d7;
+	width: 100%;
+	height: 44px;
+	bottom: 0;
+	z-index: 100;
+}
+input[name=submitCode], input[name=runCode]{
+	border: 2px solid #fefefe;
+	outline: none;
+	appearance:none;
+	padding: 2px 5px;
+	background: transparent;
+	color: #fefefe;
+	font-weight: 600;
+	font-family: arial;
+	border-radius: 2px;
+	font-size: 1em;
+	float: right;
+	margin-top: 11.5px;
+	letter-spacing: 0.5px;
+	margin-right: 1%;
+	transition: all 120ms ease-in-out;
+	-webkit-transition: all 120ms ease-in-out;
+	-moz-transition: all 120ms ease-in-out;
+	-ms-transition: all 120ms ease-in-out;
+	-o-transition: all 120ms ease-in-out;
+	display: none;
+}
+input[name=submitCode]:hover,input[name=submitCode]:focus, input[name=runCode]:hover, input[name=runCode]:focus{
+	cursor: pointer;
+	background: #fefefe;
+	/*border-color: #1A237E;*/
+	color: #1A237E;
+}
+input[name=submitCode]:active, input[name=runCode]:active{
+	transform: translateY(1px);
+}
+
+
+
+/* rules for alert template */
+.alert-wrapper{
+	/* background: rgba(200,200,200,0.9); */
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 10000;
+	display: none;
+	top:  0;
+}
+#alert{
+	width: 32%;
+	min-height: 35%;
+	background: #fafafa;
+	/* max-width: 60%; */
+	padding: 30px 10px;
+	border: 1px solid #c5c5c5;	
+	box-shadow: 1px 2px 5px 1px rgba(0,0,0,0.1), 1px 1px 10px rgba(0,0,0,0.1);
+	border-radius: 2px;
+	box-sizing: margin-box;
+	display: block;
+	margin: 12% auto;
+	position: relative;
+}
+#alert img{
+	position: relative;
+	top:  15px;
+	/* outline: 1px solid black; */
+}
+/* #alert.danger{
+	border-color: #da1010;
+} */
+#alert.danger p{
+	color: #F44336;
+}
+
+#alert.success p{
+	color: #4CAF50;
+}
+#alert.warning p{
+	color: orange;
+}
+
+/* #alert.warning #closeBtn{
+	background-color: orange;
+}
+#alert.danger #closeBtn{
+	background-color: #dd1f1f;
+}
+#alert.success #closeBtn{
+	background-color: green;
+} */
+
+#alert #closeBtn{
+	display: block;
+	margin:  30px auto 10px auto;
+	font-size:  1.1em;
+	padding:  8px 10px 1px 10px;
+	background-color: #F44336;
+	border: none;
+	border-bottom:  3px solid #d03326;
+	border-radius: 3px;
+	color:  #fff;
+	font-family: 'Raleway',sans-serif;
+	font-weight: 700;
+}
+#alert #closeBtn:hover{
+	background: #F44336f0;
+	cursor: pointer;
+}
+#alert #closeBtn:active{
+	/* background: linear-gradient(to bottom, #9a9a9a, #909090); */
+	box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.15);
+
+}
+#alert #closeBtn:focus{
+	outline:  2px solid powderblue;
+}
+
+#alert #closeBtn.success{
+	background-color: #2E7D32;
+	border-bottom-color: #1B5E20;
+}
+#alert img{
+	display: block;
+	margin: 0 auto 20px auto;
+}
+#alert p{
+	font-family: 'Raleway',helvetica;
+	/* font-weight: bold; */
+	font-size: 1.2em;
+	text-align: center;
+	/* outline: 1px solid black; */
+	margin-top: 40px;
+}
+
+
+
+/*rules for editor and question wrapper*/
+
+.main-container{
+	display: flex;
+	/* background-color: #efefef; */
+	width: 100%;
+	height: 100%;
+}
+#toggleViewBtn{
+	cursor: pointer;
+	padding:  0 2px;
+	font-family: 'Raleway';
+	font-weight: bold;
+	font-size: 1.1em;
+}
+.question-container{
+	display: block;
+	position: relative;
+	/* float: left; */
+	height: 92.5vh;
+	/* height: 90%; */
+	width: 40%;
+	background-color: #f5f5f5;
+	/* background: rgba(250,250,250,0.85); */
+	z-index: 1;
+	margin-top: 50px;
+	padding:  20px 0;
+	overflow-y: auto;
+	transition: width 100ms ease-in-out;
+}
+.editor-container{
+	width: 60%;
+	/* float:  right; */
+	margin-top: 50px;
+	position: relative;
+	/* height: 92.5vh; */
+	transition: width 100ms ease-in-out;
+	/*right: 0;*/
+}
+
+
+/* style to toggle question container and handle resize editor container */
+
+.main-container.hide-question-container .question-container{
+	width:  0;
+}
+.main-container.hide-question-container .editor-container{
+	width:  100%;
+}
+#editor{
+	position: absolute;
+	height: 100%;
+	width:100%;
+}
+/* ends here */
+
+.question-container .question-box-common-rules{
+	background-color: #efefef;	
+	width: 90%;
+	padding: 10px;
+	margin: 10px auto;
+	color: #555;
+	font-family: 'arial','Helvetica','Raleway';
+	font-size: 0.9em;
+	border: 1px solid #c0c0c0;
+	border-left: 3px solid orange;
+	/*text-indent: 10px;*/
+	text-align: justify;
+    text-rendering: geometricPrecision;
+    word-break: break-word;
+    word-wrap: break-word;
+    font-weight: 500;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.question-container .question-box > div  h4{
+	color: #556;
+}
+.question-container .question-box > div aside{
+	
+}
+.question-container .question-box > div aside.left, .question-container .question-box > div aside.right{
+	float: left;
+	width: 50%;
+	position: relative;
+}
+.question-container .question-box > div aside > pre
+{
+	background-color: rgba(200,200,220,0.4);
+	min-height: 94px;
+	padding: 10px 10px 10px 15px;
+	border: 1px solid #fff;
+	box-shadow: inset 1px 1px 5px 1px rgba(0,0,0,0.3);
+}
+.question-box-common-rules aside{
+	/* padding-left:  100px; */
+}
+.question-container .question-box > div::after {
+	content: '';
+	clear: both;
+	display: block;
+}
+.question-container .question-box > div.test-cases  aside  pre{
+	
+}
+
+.response-container{
+	background-color: rgb(250,250,255);
+	position: absolute;
+	bottom: -100%;
+	min-height: 200px;
+	width: 100%;
+	z-index: 10;
+	border: 1px solid #d0d0d0;
+	box-shadow: 0 -2px 4px 1px rgba(0,0,0,0.15);
+	transition: bottom 450ms ease-in-out;
+	-webkit-transition: bottom 450ms ease-in-out;
+	-moz-transition: bottom 450ms ease-in-out;
+}
+.response-container .pallete{
+	width: 100%;
+	height: 20px;
+	background-color: #eaeaea;
+	border: 1px solid #e0e0e0;
+	box-shadow: 0 1px 2px rgba(10,10,10,0.2);
+}
+.response-container .pallete ul {
+	list-style: none;
+	float: right;
+	margin-right: 0.1%;
+}
+.response-container .pallete ul li{
+	/*outline: 1px solid #000;*/
+	float: left;
+	padding: 0 3px;
+	margin-left: 4px;
+	box-shadow: 0 0 1px 1px rgba(0,0,0,0.3);
+	background: linear-gradient(to bottom, #eee, #aaa);
+	background: -webkit-linear-gradient(to bottom, #eee, #aaa);
+	background: -moz-linear-gradient(to bottom, #eee, #aaa);
+	color: #5f5f5f;
+	font-weight: lighter;
+}
+.response-container .pallete ul li:hover{
+	cursor: pointer;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	box-shadow: 0 0 1px 1px rgba(0,0,0,0.25);
+	background: linear-gradient(to top, #eee, #aaa);
+	background: -webkit-linear-gradient(to top, #eee, #aaa);
+	background: -moz-linear-gradient(to top, #eee, #aaa);
+}
+.response-container .pallete ul li:last-child{
+	color: rgba(250,0,0,0.6);
+}
+.response-container .pallete ul li:active{
+	background: linear-gradient(to top, #aaa, #aaa);
+	background: -webkit-linear-gradient(to top, #aaa, #aaa);
+	background: -moz-linear-gradient(to top, #aaa, #aaa);	
+}
+.response-container .response-show-box{
+	/*outline: 1px solid #000;*/
+	padding: 10px;
+	height: 200px;
+	overflow-y: auto;
+}
+.response-container .response-show-box p{
+	font-family: monospace;
+	white-space: pre;
+}
+
+/*pseudo rules for response container */
+
+.response-container.show{
+	bottom: 0;
+}
