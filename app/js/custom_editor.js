@@ -1,5 +1,5 @@
 var editor = ace.edit("editor");
-editor.setTheme("ace/theme/gob");
+editor.setTheme("ace/theme/xcode");
 // import "ace/mode/python" as PythonMode;
 // PythonMode.Mode;
 editor.getSession().setMode("ace/mode/python");
@@ -45,7 +45,7 @@ var getCode = (_mode)=>{
 var sendCode = (_code,_mode,_sc_flag)=>{
 	if("WebSocket" in window)
 	{
-		// var ws = new WebSocket("ws://172.22.128.156:8000");
+		
 		var ws = new WebSocket("ws://13.126.13.152:9990");
 		console.log("socket object created => "+ws+"\n\n");
 		ws.onopen = (event)=>{
@@ -135,7 +135,7 @@ var _mode='c';
 var app = angular.module("myModule", []).controller("myController1",function($scope){
 	var themes = ['gob','ambiance','chaos','chrome','clouds','clouds_midnight','cobalt','crimson_editor','dawn','dreamweaver','eclipse','github','twilight','gruvbox','idle_fingers','iplastic','katzenmilch','kr_theme','kuroir','merbivore','mono_industrial','monokai','pastel_on_dark','solarized_dark','solarized_light','sqlserver','terminal','textmate','tomorrow','tomorrow_night','tomorrow_night_blue','tomorrow_night_bright','tomorrow_night_eighties','vibrant_ink','xcode'];
 	$scope.themes = themes;
-	$scope.userTheme=themes[0];
+	$scope.userTheme=themes[themes.length-1];
 	$scope.changeTheme = (t)=>{
 		editor.setTheme("ace/theme/"+t);
 	};

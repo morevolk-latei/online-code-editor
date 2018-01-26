@@ -178,7 +178,7 @@ input[name=submitCode]:active, input[name=runCode]:active{
 	border-bottom:  3px solid #d03326;
 	border-radius: 3px;
 	color:  #fff;
-	font-family: 'Raleway',sans-serif;
+	font-family: 'Open Sans',sans-serif;
 	font-weight: 700;
 }
 #alert #closeBtn:hover{
@@ -203,7 +203,7 @@ input[name=submitCode]:active, input[name=runCode]:active{
 	margin: 0 auto 20px auto;
 }
 #alert p{
-	font-family: 'Raleway',helvetica;
+	font-family: 'Open Sans',helvetica;
 	/* font-weight: bold; */
 	font-size: 1.2em;
 	text-align: center;
@@ -224,7 +224,7 @@ input[name=submitCode]:active, input[name=runCode]:active{
 #toggleViewBtn{
 	cursor: pointer;
 	padding:  0 2px;
-	font-family: 'Raleway';
+	font-family: 'Open Sans';
 	font-weight: bold;
 	font-size: 1.1em;
 }
@@ -272,10 +272,10 @@ input[name=submitCode]:active, input[name=runCode]:active{
 .question-container .question-box-common-rules{
 	background-color: #efefef;	
 	width: 90%;
-	padding: 10px;
+	padding: 15px 10px;
 	margin: 10px auto;
 	color: #555;
-	font-family: 'arial','Helvetica','Raleway';
+	font-family: 'Open Sans','Helvetica','Raleway';
 	font-size: 0.9em;
 	border: 1px solid #c0c0c0;
 	border-left: 3px solid orange;
@@ -306,6 +306,7 @@ input[name=submitCode]:active, input[name=runCode]:active{
 	padding: 10px 10px 10px 15px;
 	border: 1px solid #fff;
 	box-shadow: inset 1px 1px 5px 1px rgba(0,0,0,0.3);
+	font-family: monospace;
 }
 .question-box-common-rules aside{
 	/* padding-left:  100px; */
