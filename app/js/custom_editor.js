@@ -46,14 +46,15 @@ var sendCode = (_code,_mode,_sc_flag)=>{
 	if("WebSocket" in window)
 	{
 		// var ws = new WebSocket("ws://172.22.128.156:8000");
-		var ws = new WebSocket("ws://172.22.90.42:9998");
+		var ws = new WebSocket("ws://13.126.13.152:9990");
 		console.log("socket object created => "+ws+"\n\n");
 		ws.onopen = (event)=>{
 			var _obj = {
 				input:"10\n10",
 				code: _code,
 				mode:_mode,
-				flag: _sc_flag
+				flag: _sc_flag,
+				output: ''
 			};
 			ws.send(JSON.stringify(_obj));
 			console.log("code send successfully with state "+ws.readyState);
@@ -107,16 +108,16 @@ var sendCode = (_code,_mode,_sc_flag)=>{
 					// $alert_wrapper.style.display="block";
 				}
 		};
-		ws.onclose = ()=>{
-			$alert_desc.innerHTML="Connection is closed";
-			var cl = $alert.classList;
-			if(cl.contains('success'))
-				cl.remove('success');
-			else if(cl.contains('warning'))
-				cl.remove('warning');
-			cl.add('danger');
-			$alert_wrapper.style.display="block";
-		};
+		// ws.onclose = ()=>{
+		// 	$alert_desc.innerHTML="Connection is closed";
+		// 	var cl = $alert.classList;
+		// 	if(cl.contains('success'))
+		// 		cl.remove('success');
+		// 	else if(cl.contains('warning'))
+		// 		cl.remove('warning');
+		// 	cl.add('danger');
+		// 	$alert_wrapper.style.display="block";
+		// };
 	}else
 	{
 		var cl=$alert.classList;
@@ -139,7 +140,7 @@ var app = angular.module("myModule", []).controller("myController1",function($sc
 		editor.setTheme("ace/theme/"+t);
 	};
 
-	var langs=['c','cpp','python','javascript'];
+	var langs=['c','cpp','python2','python3','javascript'];
 	$scope.langs = langs;
 	$scope.progLangMode=langs[2];
 
@@ -155,7 +156,11 @@ var app = angular.module("myModule", []).controller("myController1",function($sc
 				langMode='c_cpp';
 				_mode='cpp';
 			}
-		else if(langMode==='python')
+		else if(langMode==='python2')
+			{
+				_mode='python';
+			}
+		else if(langMode==='python3')
 			{
 				_mode='python';
 			}
