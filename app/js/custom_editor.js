@@ -321,15 +321,18 @@ function resetMainContainer(){
 function toggleQuestionContainer(e){
 	let mClassList = $mainContainer.classList;
 	let isHidden = mClassList.contains('hide-question-container') ? true:false;
-	let btnText=e.innerHTML;
-	console.log(btnText);
+	// let btnText=e.innerHTML;
+	// console.log(e);
+
 	if(isHidden)
 	{
 		mClassList.remove('hide-question-container');
 		e.innerHTML='&#171;';
+		e.setAttribute('title', 'hide');
 	}else {
 		mClassList.add('hide-question-container');
 		e.innerHTML='&#187;';
+		e.setAttribute('title', 'show');
 	}
 }
 
