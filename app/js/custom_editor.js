@@ -2,6 +2,7 @@ var editor = ace.edit("editor");
 editor.setTheme("ace/theme/xcode");
 // import "ace/mode/python" as PythonMode;
 // PythonMode.Mode;
+
 editor.getSession().setMode("ace/mode/python");
 // editor.session.setMode("ace/mode/python");
 
@@ -80,7 +81,8 @@ var sendCode = (_code,_mode,_sc_flag)=>{
 						if(cl.contains('danger'))
 							cl.remove('danger');
 						cl.add('success');
-						$alertIcon.src='http://13.126.13.152/images/success.svg';
+						$alertIcon.src='/images/success.svg';
+						// $alertIcon.src='http://13.126.13.152/images/success.svg';
 						$alert_desc.innerHTML="code submitted successfully.";
 						$closeAlertBtn.classList.add('success');
 						blurMainContainer();
@@ -159,11 +161,15 @@ var app = angular.module("myModule", []).controller("myController1",function($sc
 		else if(langMode==='python2')
 			{
 				_mode='python';
+				langMode='python';
 			}
 		else if(langMode==='python3')
 			{
 				_mode='python';
+				langMode='python';
 			}
+			// alert(langMode);
+
 		editor.getSession().setMode("ace/mode/"+langMode);
 	};
 
@@ -246,7 +252,8 @@ window.onbeforeunload=()=>{
 window.onblur=()=>{
 	--totalChance;
 	console.log(totalChance);
-	$alertIcon.src="http://13.126.13.152/images/danger.svg";	
+	// $alertIcon.src="http://13.126.13.152/images/danger.svg";	
+	$alertIcon.src="/images/danger.svg";	
 	let closeBtnClassList = $closeAlertBtn.classList;
 	if(closeBtnClassList.contains('success'))
 		closeBtnClassList.remove('success');
