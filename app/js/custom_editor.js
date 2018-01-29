@@ -133,8 +133,8 @@ var sendCode = (_code,_mode,_sc_flag)=>{
 	}
 };
 
-var _mode='c';
-var app = angular.module("myModule", []).controller("myController1",function($scope){
+var _mode='python2';
+var app = angular.module("myModule", []).controller("myController1",function($scope,$window){
 	var themes = ['gob','ambiance','chaos','chrome','clouds','clouds_midnight','cobalt','crimson_editor','dawn','dreamweaver','eclipse','github','twilight','gruvbox','idle_fingers','iplastic','katzenmilch','kr_theme','kuroir','merbivore','mono_industrial','monokai','pastel_on_dark','solarized_dark','solarized_light','sqlserver','terminal','textmate','tomorrow','tomorrow_night','tomorrow_night_blue','tomorrow_night_bright','tomorrow_night_eighties','vibrant_ink','xcode'];
 	$scope.themes = themes;
 	$scope.userTheme=themes[themes.length-1];
@@ -145,7 +145,7 @@ var app = angular.module("myModule", []).controller("myController1",function($sc
 	var langs=['c','cpp','python2','python3','javascript'];
 	$scope.langs = langs;
 	$scope.progLangMode=langs[2];
-
+	// _mode=$scope.progLangMode;
 	$scope.changeEnv = (langMode)=>{
 		
 		if(langMode==='c')
@@ -160,12 +160,12 @@ var app = angular.module("myModule", []).controller("myController1",function($sc
 			}
 		else if(langMode==='python2')
 			{
-				_mode='python';
+				_mode='python2';
 				langMode='python';
 			}
 		else if(langMode==='python3')
 			{
-				_mode='python';
+				_mode='python3';
 				langMode='python';
 			}
 			// alert(langMode);
@@ -190,6 +190,59 @@ var app = angular.module("myModule", []).controller("myController1",function($sc
 			sendCode(_code,_mode,0);
 	};
 
+	// handle window blur event
+	$window.onblur = ()=>{
+		--totalChance;
+		console.log(totalChance);
+		// $alertIcon.src="http://13.126.13.152/images/danger.svg";	
+		$alertIcon.src="/images/danger.svg";	
+		let closeBtnClassList = $closeAlertBtn.classList;
+		if(closeBtnClassList.contains('success'))
+			closeBtnClassList.remove('success');
+		var cl = $alert.classList;
+
+		blurMainContainer();
+
+		if(totalChance === 0)
+		{	
+			// alert('al chances are consumed');
+			totalChance=3;
+			// $alert_desc.innerHTML='';
+			if(cl.contains('danger'))
+				cl.remove('danger');
+			else if(cl.contains('warning'))
+				cl.remove('warning');
+			cl.add('danger');
+			
+			$alert_desc.innerHTML="All chances are consumed, code will be submitted autmatically in few seconds.";
+			$alert_wrapper.style.display="block";
+			setTimeout(()=>{
+				$alert_wrapper.style.display="none";
+				resetMainContainer();
+				console.log(`from onblur => ${$scope.progLangMode}`);
+				getCode($scope.progLangMode);
+			},5000);
+			
+		}
+		else
+		{
+			$alert_desc.innerHTML =  totalChance + ' chance left. be careful!';
+			// var cl = $alert.classList;
+			if(cl.contains('success'))
+					cl.remove('success');
+			else if(cl.contains('warning'))
+				cl.remove('warning');
+			cl.add('danger');
+			blurMainContainer();
+			$alert_wrapper.style.display="block";
+			$closeAlertBtn.focus;
+			// $closeAlertBtn.classList.add('focus');
+		}
+			
+			
+		
+		
+	};
 });
 
 
@@ -215,15 +268,16 @@ editor.commands.on('afterExec',(e)=>{
 
 // adding|binding command to editor
 
-editor.commands.addCommand({
-	name: "submit",
-	bindKey: {win: "Ctrl-Enter", mac: "Command-Enter"},
-	exec: ()=>{
-		// editor.setReadOnly(true);
-		getCode(_mode);
-	},
-	readOnly: true
-});
+// editor.commands.addCommand({
+// 	name: "submit",
+// 	bindKey: {win: "Ctrl-Enter", mac: "Command-Enter"},
+// 	exec: ()=>{
+// 		// editor.setReadOnly(true);
+// 		console.log(`from ctrl+enter => ${_mode}`);
+// 		getCode(_mode);
+// 	},
+// 	readOnly: true
+// });
 
 
 editor.getSession().on('change',(e)=>{
@@ -249,57 +303,9 @@ window.onbeforeunload=()=>{
 	return false;
 };
 
-window.onblur=()=>{
-	--totalChance;
-	console.log(totalChance);
-	// $alertIcon.src="http://13.126.13.152/images/danger.svg";	
-	$alertIcon.src="/images/danger.svg";	
-	let closeBtnClassList = $closeAlertBtn.classList;
-	if(closeBtnClassList.contains('success'))
-		closeBtnClassList.remove('success');
-	var cl = $alert.classList;
+// window.onblur=()=>{
 
-	blurMainContainer();
-
-	if(totalChance === 0)
-	{	
-		// alert('al chances are consumed');
-		totalChance=3;
-		// $alert_desc.innerHTML='';
-		if(cl.contains('danger'))
-			cl.remove('danger');
-		else if(cl.contains('warning'))
-			cl.remove('warning');
-		cl.add('danger');
-		
-		$alert_desc.innerHTML="All chances are consumed, code will be submitted autmatically in few seconds.";
-		$alert_wrapper.style.display="block";
-		setTimeout(()=>{
-			$alert_wrapper.style.display="none";
-			resetMainContainer();
-			getCode(_mode);
-		},5000);
-		
-	}
-	else
-	{
-		$alert_desc.innerHTML =  totalChance + ' chance left. be careful!';
-		// var cl = $alert.classList;
-		if(cl.contains('success'))
-				cl.remove('success');
-		else if(cl.contains('warning'))
-			cl.remove('warning');
-		cl.add('danger');
-		blurMainContainer();
-		$alert_wrapper.style.display="block";
-		$closeAlertBtn.focus;
-		// $closeAlertBtn.classList.add('focus');
-	}
-		
-		
-	
-	
-};
+// };
 
 var closeAlert = (e)=>{
 	$alert_wrapper.style.display="none";

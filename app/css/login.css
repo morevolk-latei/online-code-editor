@@ -1,0 +1,143 @@
+:root{
+	--blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #868e96;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #868e96;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f0f0f0;
+    --dark: #343a40;
+}
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Raleway',sans-serif;
+}
+html,body{
+	height: 100%;
+	background: var(--light);
+}
+body{
+	overflow-y: hidden;
+}
+.main-container{
+	/* outline: 1px solid red; */
+}
+
+form{
+	background: #ffffff;
+	display: block;
+	width:  31vw;
+	margin: 10% auto;
+	padding:  20px 30px; 
+	box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+}
+form .heading{
+	/* outline: 1px solid crimson; */
+	margin-top:  -50px;
+	margin-bottom: 3rem;
+}
+form .heading h1{
+	background: var(--teal);
+	padding:  15px 0;
+	text-align: center;
+	color: #fff;
+	box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+}
+.input-common-rules{
+	/* outline: 1px solid red; */
+	padding:  5px 0;
+	position: relative;
+	color: #9e9e9e;
+	display: flex;
+	margin-bottom: 4%;
+}
+.input-common-rules i{
+	font-size: 1.5em;
+	/* outline: 1px solid blue; */
+	position: relative;
+	margin-right: 20px;
+}
+.input-common-rules i.active{
+	color: var(--teal);
+}
+.input-common-rules i.envelope-icon{
+	/* outline: 1px solid red; */
+	font-size: 1.2em;
+}
+.input-common-rules label{
+	position: relative;
+	/* outline: 1px solid green; */
+	width: 100%;
+	z-index: 1;
+}
+.input-common-rules label span{
+	position: absolute;
+	z-index:  -1;
+	font-size: 0.9em;
+	transform: translate(0, 1px);
+	transition: all 80ms ease-in;
+
+}
+.input-common-rules label span.active{
+	transform: translate(0, -19px);
+	font-size: 0.8em;
+	color: var(--teal);
+}
+.input-common-rules label input{
+	border:  none;
+	border-bottom: 1px solid #9e9e9e;
+	width: 100%;
+	position: relative;
+	bottom: 3px;
+	background: transparent;
+	z-index: 1;
+	font-size: 1.1em;
+	/* padding:  0 10px 5px 10px; */
+	padding:  0 0 5px 0;
+	outline: none;
+	color: #5e5e5e;
+	font-family: 'arial';
+}
+.input-common-rules label input:focus{
+	border-bottom-color: var(--teal);
+}
+/* input[type=number]::-webkit-inner-spin-button{
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+} */
+
+input[type=button]{
+	background: var(--teal);
+	border: 1px solid var(--teal);
+	padding:  8px 15px;
+	font-size: 1em;
+	text-transform: uppercase;
+	color: #fff;
+	display: block;
+	margin:  2% auto;
+	box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+}
+input[type=button]:hover{
+	cursor: pointer;
+}
+.button-box{
+	/* outline: 1px solid	red; */
+	padding-top: 10px;
+}
