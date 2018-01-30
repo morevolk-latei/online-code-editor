@@ -1,9 +1,17 @@
 var editor = ace.edit("editor");
+ace.require("ace/ext/language_tools");
+// ace.require("ace/ext/emmet");
+console.log(Object.keys(editor.$options));
 editor.setTheme("ace/theme/xcode");
 editor.setShowPrintMargin(false);
-
+editor.$blockScrolling = Infinity;
 // import "ace/mode/python" as PythonMode;
 // PythonMode.Mode;
+editor.setOptions({
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: true
+    });
 
 editor.getSession().setMode("ace/mode/python");
 // editor.session.setMode("ace/mode/python");
@@ -13,7 +21,7 @@ var $questionContainer = document.querySelector('.question-container');
 var $editorContainer = document.querySelector('.editor-container');
 
 var $responseContainer = document.getElementById('responseContainer');
-var $responseShow = document.getElementById('responseShow');
+
 var $alert_wrapper = document.getElementsByClassName('alert-wrapper')[0];
 var $alert_desc = document.getElementsByClassName('alert-desc')[0];
 var $alert = document.getElementById('alert');
@@ -76,7 +84,7 @@ var sendCode = (_code,_mode,_sc_flag)=>{
                     console.log('Recieved code => \t'+_output);
 					console.log('Recieved code => \t'+event.data);
 
-					if(_sc_flag)
+					if(_sc_flag) // if _sc_flag is 1 then submit request
 					{	
 						totalChance=3;
 						var cl = $alert.classList;
@@ -89,15 +97,15 @@ var sendCode = (_code,_mode,_sc_flag)=>{
 						$closeAlertBtn.classList.add('success');
 						blurMainContainer();
 						$alert_wrapper.style.display = 'block';
+					}else {
+						// else compile request so output box is shown
+						$responseContainer.innerHTML=_output;
 					}
 
-					var rs_cl = $responseContainer.classList;
-					$responseShow.innerHTML = _output;
-					rs_cl.add('show');
-					setTimeout(()=>{
-						if(rs_cl.contains('show'))
-							rs_cl.remove('show');
-					},6000);
+					
+					
+					
+					
 
 					
 
@@ -193,7 +201,7 @@ var app = angular.module("myModule", []).controller("myController1",function($sc
 	};
 
 	// handle window blur event
-	//$window.onblur = ()=>{
+	$window.onblur = ()=>{
 		--totalChance;
 		console.log(totalChance);
 		// $alertIcon.src="http://13.126.13.152/images/danger.svg";	
@@ -240,7 +248,7 @@ var app = angular.module("myModule", []).controller("myController1",function($sc
 			$closeAlertBtn.focus;
 			// $closeAlertBtn.classList.add('focus');
 		}
-	//};
+	};
 	// window blur handler ends
 
 	$scope.isQuestionBox = true;
@@ -325,9 +333,7 @@ var closeAlert = (e)=>{
 	resetMainContainer();
 };
 
-var closeResponseContainer = (e)=>{
-	$responseContainer.classList.remove('show');	
-};
+
 
 function blurMainContainer(){
 	$mainContainer.style.filter='blur(4px)';

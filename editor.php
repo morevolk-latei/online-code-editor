@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="app/css/custom_editor.css">
 	<script src="plugins/js/angular.min.js" type="text/javascript"></script>
 	<script src="plugins/js/src-min-noconflict/ace.js" type="text/javascript"></script>
+	<script src="plugins/js/src-min-noconflict/ext-language_tools.js"></script>
 
 </head>
 <body ng-controller="myController1">
@@ -46,7 +47,7 @@
 			<div class="qo-wrapper">
 				<div class="modal-buttons">
 					<input type="button" value="problem" ng-click="showProblemBox()" id="questionModalBtn" class="modal-btn" ng-class="{'active': isQuestionBox}">
-					<input type="button" value="output" ng-click="showOutputBox()" id="outputModalBtn" class="modal-btn" ng-class="{'active': isOutputBox}">
+						<input type="button" value="output" ng-click="showOutputBox()" id="outputModalBtn" class="modal-btn" ng-class="{'active': isOutputBox}">
 				</div>
 							<div class="question-container" ng-class="{'active': isQuestionBox}">
 								<section class="question-box">
@@ -129,14 +130,7 @@
 
 							<!-- code for response -->
 							<div class="response-container" id="responseContainer" ng-class="{'active': isOutputBox}" >
-								<div class="pallete">
-									<ul>
-										<li><p id="closePallete" onclick="closeResponseContainer(0)">&#10005;</p></li>
-									</ul>	
-								</div>
-								<div class="response-show-box" >
-									<p id="responseShow"></p>
-								</div>
+								
 							</div>
 							<!-- response container ends here -->
 			</div>

@@ -250,6 +250,7 @@ input[name=submitCode]:active, input[name=runCode]:active{
 	position: relative;
 	height: 92.5vh;
 	transition: width 100ms ease-in-out;
+	/* overflow: scroll; */
 	/*right: 0;*/
 }
 .question-container, .response-container{
