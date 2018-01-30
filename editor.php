@@ -17,7 +17,7 @@
 	<script src="plugins/js/src-min-noconflict/ext-language_tools.js"></script>
 
 </head>
-<body ng-controller="myController1">
+<body ng-controller="myController1" id="body">
 
 <div class="alert-wrapper">
 	<div id="alert">

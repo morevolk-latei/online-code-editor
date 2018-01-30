@@ -1,7 +1,7 @@
 var editor = ace.edit("editor");
 ace.require("ace/ext/language_tools");
 // ace.require("ace/ext/emmet");
-console.log(Object.keys(editor.$options));
+// console.log(Object.keys(editor.$options));
 editor.setTheme("ace/theme/xcode");
 editor.setShowPrintMargin(false);
 editor.$blockScrolling = Infinity;
@@ -99,6 +99,11 @@ var sendCode = (_code,_mode,_sc_flag)=>{
 						$alert_wrapper.style.display = 'block';
 					}else {
 						// else compile request so output box is shown
+						// alert();
+							let scope = angular.element(document.getElementById("body")).scope();
+							    scope.$apply(function () {
+							    scope.showOutputBox();
+							    });
 						$responseContainer.innerHTML=_output;
 					}
 
@@ -368,3 +373,24 @@ function toggleQOContainer(e){
 
 
 // ========================================================
+
+
+// disable right click
+editor.container.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+    console.log('%cRight click is disabled','color: white; background: red; border-radius: 2px; padding: 5px 10px;');
+    return false;
+}, false);
+
+// disable paste
+
+// editor.onPaste = e => {
+//     console.log('%cPaste is disabled','color: white; background: orange; border-radius: 2px; padding: 5px 10px;');
+// 	return '';
+// };
+
+
+stop = function(e) { e.stopPropagation(); e.preventDefault(); console.log('%ccut copy Paste is disabled','color: white; background: orange; border-radius: 2px; padding: 5px 10px;'); }
+document.querySelector(".ace_editor").addEventListener("copy", stop, true)
+document.querySelector(".ace_editor").addEventListener("cut", stop, true)
+document.querySelector(".ace_editor").addEventListener("paste", stop, true)
