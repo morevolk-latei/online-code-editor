@@ -11,6 +11,7 @@
 </head>
 <body>
 	<div class="main-container">
+		<div class="form-wrapper">
 		<form method="post" accept-charset="utf-8" >
 		 <!-- onsubmit="return validateForm(this)" -->
 			<div class="form-card wrapper">
@@ -22,18 +23,26 @@
 				</div>
 				<div class="registration-no-input-box input-common-rules">
 					<i class="fa fa-user field-icon"></i>
-					<label onclick="activateField(this)"><span>Registration number</span><input type="text" name="regNumber" required></label>
+					<label ><span>Registration number</span><input type="text" name="regNumber" required onfocus="activateField(this)" onfocusout="deActivateField(this)" autocomplete="off" ></label>
 				</div>
 				<div class="email-id-input-box input-common-rules">
 					<i class="fa fa-envelope envelope-icon field-icon"></i>
-					<label onclick="activateField(this)"><span>Email id</span><input type="email" name="emailId" required></label>
+					<label ><span>Email id</span><input type="email" name="emailId" required onfocus="activateField(this)" onfocusout="deActivateField(this)" autocomplete="off" ></label>
 				</div>
 				<div class="button-box">
 					<input type="button" name="" value="login" onclick="validateForm()">
 				</div>
 			</div>
+
 		</form>
+		<!-- end of form -->
+		<p id="errorMsg" class="error hidden"><span class="close-cross error-close-icon">&#10005;</span> <span id="errText"></span></p> 
+		<!-- invalid input! Please enter correct information -->
+
+		</div> 
+		<!-- end of form wrapper -->
 	</div>
+	<!-- end of main-container -->
 	<script>
 		function validateForm(e){
 			// alert();
@@ -52,11 +61,44 @@
 		
 		function activateField(e){
 			let _target = e;
-			let spanEl = _target.children[0];
-			spanEl.classList.add('active');
-			let fieldIcon = _target.parentNode.children[0];
-			fieldIcon.classList.add('active');
+			// console.log(_target);
+			let spanEl = _target.parentNode.children[0];
+			let icon = _target.parentNode.parentElement.childNodes[1];
+			if(_target.value.length === 0)
+			{
+				// spanEl.classList.add('active');
+				// icon.classList.add('active');
+				addClass(spanEl, 'active');
+				addClass(icon, 'active');
+			}
+			// console.log(_target.parentNode.parentElement.childNodes[1]);
 		}
+		function deActivateField(e){
+			let _target = e;
+			// console.log(_target);
+			let spanEl = _target.parentNode.children[0];
+			let icon = _target.parentNode.parentElement.childNodes[1];
+			if(_target.value.length === 0)
+			{
+				// spanEl.classList.remove('active');
+				// icon.classList.remove('active');
+				removeClass(spanEl, 'active');
+				removeClass(icon, 'active');
+			}
+		}
+
+		function addClass(el, _class){
+			el.classList.add(_class);
+		}
+		function removeClass(el, _class){
+			el.classList.remove(_class);
+		}
+
+		var closeErrorCross = document.querySelector('.error-close-icon');
+		closeErrorCross.addEventListener('click', (e)=>{
+			// console.log(e);
+			addClass(e.target.parentNode, 'hidden');
+		});
 	</script>
 </body>
 </html>

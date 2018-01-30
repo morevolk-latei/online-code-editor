@@ -53,7 +53,7 @@ var sendCode = (_code,_mode,_sc_flag)=>{
 			var _obj = {
 				input:"10\n10",
 				code: _code,
-				mode:_mode,
+					mode:_mode,
 				flag: _sc_flag,
 				output: ''
 			};

@@ -9,7 +9,7 @@
     --green: #28a745;
     --teal: #20c997;
     --cyan: #17a2b8;
-    --white: #fff;
+    --white: #ffffff;
     --gray: #868e96;
     --gray-dark: #343a40;
     --primary: #007bff;
@@ -38,13 +38,16 @@ body{
 	/* outline: 1px solid red; */
 }
 
-form{
+.form-wrapper{
 	background: #ffffff;
 	display: block;
 	width:  31vw;
 	margin: 10% auto;
-	padding:  20px 30px 25px 30px; 
 	box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+}
+form{
+	/* background: var(--red); */
+	padding:  20px 30px 25px 30px; 
 }
 form .heading{
 	/* outline: 1px solid crimson; */
@@ -140,4 +143,47 @@ input[type=button]:hover{
 .button-box{
 	/* outline: 1px solid	red; */
 	padding-top: 10px;
+}
+
+.error{
+	background: var(--red);
+}
+p#errorMsg{
+	
+	color: var(--white);
+	padding:  10px 30px;
+	font-size: 0.9em;
+	font-weight: 400;
+}
+p#errorMsg.error{
+	background: var(--red);
+}
+.close-cross{
+	font-size: 0.9em;
+	background: rgba(0,0,0,0.2);
+	border-radius: 50%;
+	padding:  0 2px;
+	/* vertical-align: middle; */
+	display: inline-block;
+	/* float: left; */
+	width: 18px;
+	height: 18px;
+	line-height: 18px;
+	vertical-align: top;
+	text-align: center;
+	transform: scale(0.98);
+	background: var(--white);
+	font-weight: bold;
+	user-select: none;
+	cursor: pointer;
+}
+p#errorMsg.error .close-cross{
+	color: var(--red);
+}
+
+.close-cross:hover{
+	color: var(--dark);
+}
+.hidden{
+	display: none;
 }
