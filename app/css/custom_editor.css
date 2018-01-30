@@ -9,8 +9,8 @@ box-sizing: border-box;
 body{
 	overflow: hidden;
 	height: 100%;
-	background-color: rgba(0,0,0,0.9);
-	/* background-color: #efefef; */
+	/* background-color: rgba(0,0,0,0.9); */
+	background-color: #efefef;
 }
 
 header{
@@ -221,45 +221,75 @@ input[name=submitCode]:active, input[name=runCode]:active{
 	width: 100%;
 	height: 100%;
 }
+.qo-wrapper{
+	width:  40%;
+	/* height: 98.5vh; */
+	/* display: flex; */
+	position: relative;
+	/* display: flex; */
+	overflow: hidden;
+	/* margin-top: 50px; */
+	padding:  50px 0;
+	background: rgba(250,250,250,0.85);
+	transition: width 100ms ease-in-out;
+
+}
 #toggleViewBtn{
 	cursor: pointer;
 	padding:  0 2px;
 	font-family: 'Open Sans';
 	font-weight: bold;
 	font-size: 1.1em;
-}
-.question-container{
-	display: block;
-	position: relative;
-	/* float: left; */
-	height: 92.5vh;
-	/* height: 90%; */
-	width: 40%;
-	background-color: #fefefe;
-	/* background: rgba(250,250,250,0.85); */
-	z-index: 1;
-	margin-top: 50px;
-	padding:  20px 0;
-	overflow-y: auto;
-	transition: width 100ms ease-in-out;
+	/* width:  10%; */
+	/* height: 92.5vh; */
 }
 .editor-container{
 	width: 60%;
 	/* float:  right; */
 	margin-top: 50px;
 	position: relative;
-	/* height: 92.5vh; */
+	height: 92.5vh;
 	transition: width 100ms ease-in-out;
 	/*right: 0;*/
 }
+.question-container, .response-container{
+	/* display: block; */
+	position: absolute;
+	/* float: left; */
+	/* height: 92.5vh; */
+	height: 88%;
+	width: 100%;
+	/* background-color: #fefefe; */
+	background: rgba(250,250,250,0.81);
+	/* z-index: 1; */
+	padding:  25px 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	z-index:  1;
+	/* transition: width 100ms ease-in-out; */
+}
 
+.response-container{
+	display: none;
+}
+.question-container{
+	display: none;
+}
+.response-container.active{
+	display: block;
+	z-index: 2;
+}
+.question-container.active{
+	display: block;
+	z-index: 2;
+}
 
 /* style to toggle question container and handle resize editor container */
 
-.main-container.hide-question-container .question-container{
+.main-container.hide-qo-container .qo-wrapper{
 	width:  0;
 }
-.main-container.hide-question-container .editor-container{
+.main-container.hide-qo-container .editor-container{
 	width:  100%;
 }
 #editor{
@@ -320,76 +350,30 @@ input[name=submitCode]:active, input[name=runCode]:active{
 	
 }
 
-.response-container{
-	background-color: rgb(250,250,255);
-	position: absolute;
-	bottom: -100%;
-	min-height: 200px;
-	width: 100%;
-	z-index: 10;
-	border: 1px solid #d0d0d0;
-	box-shadow: 0 -2px 4px 1px rgba(0,0,0,0.15);
-	transition: bottom 450ms ease-in-out;
-	-webkit-transition: bottom 450ms ease-in-out;
-	-moz-transition: bottom 450ms ease-in-out;
+
+/* modal buttons styling rules */
+
+.modal-buttons{
+	display: flex;
 }
-.response-container .pallete{
-	width: 100%;
-	height: 20px;
-	background-color: #eaeaea;
-	border: 1px solid #e0e0e0;
-	box-shadow: 0 1px 2px rgba(10,10,10,0.2);
+
+.modal-btn{
+	width: 50%;
+	border:  1px dotted #999;
+	outline: none;
+	padding:  10px 0;
+	font-size:  0.88em;
+	color:  #333;
+	background-color: #e0e0e0;
 }
-.response-container .pallete ul {
-	list-style: none;
-	float: right;
-	margin-right: 0.1%;
-}
-.response-container .pallete ul li{
-	/*outline: 1px solid #000;*/
-	float: left;
-	padding: 0 3px;
-	margin-left: 4px;
-	box-shadow: 0 0 1px 1px rgba(0,0,0,0.3);
-	background: linear-gradient(to bottom, #eee, #aaa);
-	background: -webkit-linear-gradient(to bottom, #eee, #aaa);
-	background: -moz-linear-gradient(to bottom, #eee, #aaa);
-	color: #5f5f5f;
-	font-weight: lighter;
-}
-.response-container .pallete ul li:hover{
+.modal-btn:hover{
+	background-color: #d0d0d0;
 	cursor: pointer;
-	user-select: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	-o-user-select: none;
-	box-shadow: 0 0 1px 1px rgba(0,0,0,0.25);
-	background: linear-gradient(to top, #eee, #aaa);
-	background: -webkit-linear-gradient(to top, #eee, #aaa);
-	background: -moz-linear-gradient(to top, #eee, #aaa);
 }
-.response-container .pallete ul li:last-child{
-	color: rgba(250,0,0,0.6);
+.modal-btn:active{
+	background-color: #c0c0c0;
 }
-.response-container .pallete ul li:active{
-	background: linear-gradient(to top, #aaa, #aaa);
-	background: -webkit-linear-gradient(to top, #aaa, #aaa);
-	background: -moz-linear-gradient(to top, #aaa, #aaa);	
-}
-.response-container .response-show-box{
-	/*outline: 1px solid #000;*/
-	padding: 10px;
-	height: 200px;
-	overflow-y: auto;
-}
-.response-container .response-show-box p{
-	font-family: monospace;
-	white-space: pre;
-}
-
-/*pseudo rules for response container */
-
-.response-container.show{
-	bottom: 0;
+.modal-btn.active{
+	background-color: #d0d0d0;
+	border-color: #888;
 }

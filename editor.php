@@ -43,25 +43,30 @@
 		</header>
 		<div class="main-container">
 			
-			<div class="question-container">
-				<section class="question-box">
-					<p class="question question-box-common-rules">
-						<font style="color: #556; font-weight: bold; ">Question 1) .</font><br/><br/>
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-					</p>
+			<div class="qo-wrapper">
+				<div class="modal-buttons">
+					<input type="button" value="problem" ng-click="showProblemBox()" id="questionModalBtn" class="modal-btn" ng-class="{'active': isQuestionBox}">
+					<input type="button" value="output" ng-click="showOutputBox()" id="outputModalBtn" class="modal-btn" ng-class="{'active': isOutputBox}">
+				</div>
+							<div class="question-container" ng-class="{'active': isQuestionBox}">
+								<section class="question-box">
+									<p class="question question-box-common-rules">
+										<font style="color: #556; font-weight: bold; ">Question 1) .</font><br/><br/>
+										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
+									</p>
 
-					<div class="test-cases question-box-common-rules">
-						<h4>Test Cases: </h4>
-						<aside>
-							<pre>
-								<li>0 < t <= 10<sup>9</sup></li><li>0 < t <= 10<sup>9</sup></li><li>0 < t <= 10<sup>9</sup></li>
-							</pre>
-						</aside>
-					</div>
+									<div class="test-cases question-box-common-rules">
+										<h4>Test Cases: </h4>
+										<aside>
+											<pre>
+												<li>0 < t <= 10<sup>9</sup></li><li>0 < t <= 10<sup>9</sup></li><li>0 < t <= 10<sup>9</sup></li>
+											</pre>
+										</aside>
+									</div>
 
-					<div class="sample-output-box question-box-common-rules">
-						<aside class="left">
-							<h4>Sample input: </h4>
+									<div class="sample-output-box question-box-common-rules">
+										<aside class="left">
+						<h4>Sample input: </h4>
 <pre>
 2
 4
@@ -69,19 +74,19 @@
 7
 10 40 56 1 4 91 0
 </pre>
-						</aside>
-						<aside class="right">
-							<h4>Sample output: </h4>
+										</aside>
+										<aside class="right">
+											<h4>Sample output: </h4>
 <pre>
 10
 45
 </pre>
-						</aside>
-					</div>
+										</aside>
+									</div>
 
-<div class="sample-output-box question-box-common-rules">
-						<aside class="left">
-							<h4>Sample input: </h4>
+				<div class="sample-output-box question-box-common-rules">
+										<aside class="left">
+											<h4>Sample input: </h4>
 <pre>
 2
 4
@@ -89,18 +94,18 @@
 7
 10 40 56 1 4 91 0
 </pre>
-						</aside>
-						<aside class="right">
-							<h4>Sample output: </h4>
+										</aside>
+										<aside class="right">
+											<h4>Sample output: </h4>
 <pre>
 10
 45
 </pre>
-						</aside>
-					</div>
-<div class="sample-output-box question-box-common-rules">
-						<aside class="left">
-							<h4>Sample input: </h4>
+										</aside>
+									</div>
+				<div class="sample-output-box question-box-common-rules">
+										<aside class="left">
+											<h4>Sample input: </h4>
 <pre>
 2
 4
@@ -108,20 +113,35 @@
 7
 10 40 56 1 4 91 0
 </pre>
-						</aside>
-						<aside class="right">
-							<h4>Sample output: </h4>
+										</aside>
+										<aside class="right">
+											<h4>Sample output: </h4>
 <pre>
 10
 45
 </pre>
-						</aside>
-					</div>
+										</aside>
+									</div>
 
-				</section>
+								</section>
+							</div>
+							<!-- question container ends here -->
+
+							<!-- code for response -->
+							<div class="response-container" id="responseContainer" ng-class="{'active': isOutputBox}" >
+								<div class="pallete">
+									<ul>
+										<li><p id="closePallete" onclick="closeResponseContainer(0)">&#10005;</p></li>
+									</ul>	
+								</div>
+								<div class="response-show-box" >
+									<p id="responseShow"></p>
+								</div>
+							</div>
+							<!-- response container ends here -->
 			</div>
-			<!-- question container ends here -->
-			<button type="button" onclick="toggleQuestionContainer(this)" id="toggleViewBtn" title="hide" > &#171; </button>
+			<!-- qo container ends here -->
+			<button type="button" onclick="toggleQOContainer(this)" id="toggleViewBtn" title="hide" > &#171; </button>
 			<div class="editor-container">
 				<pre id="editor"></pre>
 			</div>
@@ -130,19 +150,7 @@
 
 
 
-		<!-- code for response -->
-		<div class="response-container" id="responseContainer">
-			<div class="pallete">
-				<ul>
-					<!-- <li><p id="minimise-pallete">&#10005;</p></li> -->
-					<!-- <li><p id="expand-pallete">&#10005;</p></li> -->
-					<li><p id="closePallete" onclick="closeResponseContainer(0)">&#10005;</p></li>
-				</ul>	
-			</div>
-			<div class="response-show-box" >
-				<p id="responseShow"></p>
-			</div>
-		</div>
+		
 	</section>
 	<script src="app/js/custom_editor.js" type="text/javascript"></script>
 	<!-- <script src="app/js/keyevents.js" type="text/javascript"></script> -->

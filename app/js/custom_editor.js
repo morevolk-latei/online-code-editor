@@ -1,5 +1,7 @@
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/xcode");
+editor.setShowPrintMargin(false);
+
 // import "ace/mode/python" as PythonMode;
 // PythonMode.Mode;
 
@@ -191,7 +193,7 @@ var app = angular.module("myModule", []).controller("myController1",function($sc
 	};
 
 	// handle window blur event
-	$window.onblur = ()=>{
+	//$window.onblur = ()=>{
 		--totalChance;
 		console.log(totalChance);
 		// $alertIcon.src="http://13.126.13.152/images/danger.svg";	
@@ -238,10 +240,21 @@ var app = angular.module("myModule", []).controller("myController1",function($sc
 			$closeAlertBtn.focus;
 			// $closeAlertBtn.classList.add('focus');
 		}
-			
-			
-		
-		
+	//};
+	// window blur handler ends
+
+	$scope.isQuestionBox = true;
+	$scope.isOutputBox = false;
+	$scope.showProblemBox = ()=>{
+		// $scope.isQuestionBox ? false: true;
+		// $scope.isOutputBox = $scope.isOutputBox ? false: true;
+		$scope.isQuestionBox = true;
+		$scope.isOutputBox = false;
+	};
+
+	$scope.showOutputBox = ()=>{
+		$scope.isQuestionBox = false;
+		$scope.isOutputBox = true;
 	};
 });
 
@@ -324,19 +337,19 @@ function resetMainContainer(){
 }
 
 
-function toggleQuestionContainer(e){
+function toggleQOContainer(e){
 	let mClassList = $mainContainer.classList;
-	let isHidden = mClassList.contains('hide-question-container') ? true:false;
+	let isHidden = mClassList.contains('hide-qo-container') ? true:false;
 	// let btnText=e.innerHTML;
 	// console.log(e);
 
 	if(isHidden)
 	{
-		mClassList.remove('hide-question-container');
+		mClassList.remove('hide-qo-container');
 		e.innerHTML='&#171;';
 		e.setAttribute('title', 'hide');
 	}else {
-		mClassList.add('hide-question-container');
+		mClassList.add('hide-qo-container');
 		e.innerHTML='&#187;';
 		e.setAttribute('title', 'show');
 	}
