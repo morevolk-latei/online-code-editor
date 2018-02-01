@@ -26,10 +26,10 @@
 		<input type="button" name="closeBtn" id="closeBtn" value="OK" onclick="closeAlert(this)">
 	</div>
 </div>
-	<section>
+	<section class="main-section">
 		<header>
 			<div class="logo">
-				<h2>i<span style="border: 2px solid #ffffff;border-radius: 4px;margin-left: 1px;padding: 0 2px;">care</span></h2>
+				<h2>i<span>deobyte</span></h2>
 			</div>
 			<div class="select-theme" id="themeSelectionContainer">
 				<label>Theme:</label>

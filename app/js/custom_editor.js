@@ -17,6 +17,7 @@ editor.getSession().setMode("ace/mode/python");
 // editor.session.setMode("ace/mode/python");
 
 var $mainContainer = document.querySelector('.main-container');
+var $mainSection = document.querySelector('.main-section');
 var $questionContainer = document.querySelector('.question-container');
 var $editorContainer = document.querySelector('.editor-container');
 
@@ -27,6 +28,8 @@ var $alert_desc = document.getElementsByClassName('alert-desc')[0];
 var $alert = document.getElementById('alert');
 var $alertIcon = document.getElementById('alertIcon');
 var $closeAlertBtn = document.getElementById('closeBtn');
+var $runCodeBtn = document.querySelector('input[name=runCode]');
+var $submitCodeBtn = document.querySelector('input[name=submitCode]');
 var totalChance=3;
 var flag=true;
 /// <reference path="plugin/js/angular.min.js"/>
@@ -86,6 +89,8 @@ var sendCode = (_code,_mode,_sc_flag)=>{
 
 					if(_sc_flag) // if _sc_flag is 1 then submit request
 					{	
+						$submitCodeBtn.classList.remove('active');
+						$submitCodeBtn.removeAttribute('disabled');
 						totalChance=3;
 						var cl = $alert.classList;
 						if(cl.contains('danger'))
@@ -104,6 +109,9 @@ var sendCode = (_code,_mode,_sc_flag)=>{
 							    scope.$apply(function () {
 							    scope.showOutputBox();
 							    });
+						// hide loader upon getting result 
+						$runCodeBtn.classList.remove('active');
+						$runCodeBtn.removeAttribute('disabled');
 						$responseContainer.innerHTML=_output;
 					}
 
@@ -191,6 +199,8 @@ var app = angular.module("myModule", []).controller("myController1",function($sc
 	
 
 	$scope.getCode = (_mode)=>{
+			$submitCodeBtn.classList.add('active');
+			$submitCodeBtn.setAttribute('disabled','disabled');
 			console.log(_mode);
 			var _code = editor.session.getValue();
 			console.log(_code);
@@ -199,6 +209,8 @@ var app = angular.module("myModule", []).controller("myController1",function($sc
 
 
 	$scope.runCode = (_mode)=>{
+			$runCodeBtn.classList.add('active');
+			$runCodeBtn.setAttribute('disabled', 'disabled');
 			console.log(_mode);
 			var _code = editor.session.getValue();
 			console.log(_code);
@@ -235,6 +247,8 @@ var app = angular.module("myModule", []).controller("myController1",function($sc
 				$alert_wrapper.style.display="none";
 				resetMainContainer();
 				console.log(`from onblur => ${$scope.progLangMode}`);
+				$submitCodeBtn.classList.add('active');
+				$submitCodeBtn.setAttribute('disabled', 'disabled');
 				getCode($scope.progLangMode);
 			},5000);
 			
@@ -341,10 +355,10 @@ var closeAlert = (e)=>{
 
 
 function blurMainContainer(){
-	$mainContainer.style.filter='blur(4px)';
+	$mainSection.style.filter='blur(4px)';
 }
 function resetMainContainer(){
-	$mainContainer.style.filter='none';	
+	$mainSection.style.filter='none';	
 }
 
 

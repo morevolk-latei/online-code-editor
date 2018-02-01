@@ -112,7 +112,12 @@ input[name=submitCode]:hover,input[name=submitCode]:focus, input[name=runCode]:h
 input[name=submitCode]:active, input[name=runCode]:active{
 	transform: translateY(1px);
 }
-
+input[name=submitCode].active, input[name=runCode].active{
+	padding-right: 30px;
+	background: #fefefe url('/images/loader1_1.svg') no-repeat center right;
+	background-size: 20px 20px;
+	color: #1A237E;
+}
 
 
 /* rules for alert template */
